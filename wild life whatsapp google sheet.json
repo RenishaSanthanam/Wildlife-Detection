@@ -1,0 +1,502 @@
+[
+    {
+        "id": "fd24d304bb9eec3a",
+        "type": "tab",
+        "label": "wildlife detection",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "57964d39e51630c4",
+        "type": "inject",
+        "z": "fd24d304bb9eec3a",
+        "name": "Cat",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "be605e75d3126d67"
+            ]
+        ]
+    },
+    {
+        "id": "be605e75d3126d67",
+        "type": "http request",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://pixnio.com/free-images/2017/09/26/2017-09-26-07-22-55.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "7e39a79266beb51b"
+            ]
+        ]
+    },
+    {
+        "id": "7e39a79266beb51b",
+        "type": "tensorflowCoco",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "modelUrl": "http://localhost:1880/coco/model.json",
+        "scoreThreshold": 0.5,
+        "passthru": "bbox",
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "6a0faf24592a98d6",
+                "b940e693c5156040",
+                "8d1181e5c9117c71",
+                "8cc71ddb2ef655eb"
+            ]
+        ]
+    },
+    {
+        "id": "5b2bec57b1b1881d",
+        "type": "http request",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://pixnio.com/free-images/2017/08/19/2017-08-19-07-57-49-576x384.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "7e39a79266beb51b"
+            ]
+        ]
+    },
+    {
+        "id": "765938d8fa25f1cb",
+        "type": "http request",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "https://pixnio.com/free-images/2017/03/07/2017-03-07-06-37-47-576x465.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 550,
+        "y": 320,
+        "wires": [
+            [
+                "7e39a79266beb51b"
+            ]
+        ]
+    },
+    {
+        "id": "41d2d8f31bbf4321",
+        "type": "http request",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": false,
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Movement_and_cars.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 550,
+        "y": 380,
+        "wires": [
+            [
+                "7e39a79266beb51b"
+            ]
+        ]
+    },
+    {
+        "id": "563ec8010b60d6db",
+        "type": "http request",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": false,
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Pedestrian_crossing_street.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 550,
+        "y": 440,
+        "wires": [
+            [
+                "7e39a79266beb51b"
+            ]
+        ]
+    },
+    {
+        "id": "6a0faf24592a98d6",
+        "type": "debug",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": true,
+        "complete": "classes",
+        "targetType": "msg",
+        "statusVal": "classes",
+        "statusType": "auto",
+        "x": 980,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b940e693c5156040",
+        "type": "image",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "width": "250",
+        "data": "image",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "outputs": 0,
+        "x": 980,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6e131ecd8cf0a814",
+        "type": "inject",
+        "z": "fd24d304bb9eec3a",
+        "name": "Giraffe",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [
+                "5b2bec57b1b1881d"
+            ]
+        ]
+    },
+    {
+        "id": "d0a2039386f304cc",
+        "type": "inject",
+        "z": "fd24d304bb9eec3a",
+        "name": "Zebra",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "765938d8fa25f1cb"
+            ]
+        ]
+    },
+    {
+        "id": "3a4c326543d0f8b8",
+        "type": "inject",
+        "z": "fd24d304bb9eec3a",
+        "name": "Multiple cars",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "41d2d8f31bbf4321"
+            ]
+        ]
+    },
+    {
+        "id": "6e54a3b11ee4a432",
+        "type": "inject",
+        "z": "fd24d304bb9eec3a",
+        "name": "Pedestrians",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 440,
+        "wires": [
+            [
+                "563ec8010b60d6db"
+            ]
+        ]
+    },
+    {
+        "id": "8d1181e5c9117c71",
+        "type": "function",
+        "z": "fd24d304bb9eec3a",
+        "name": "function 13",
+        "func": "//msg.payload = msg.classes;\nmsg.payload = JSON.stringify(msg.classes);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 80,
+        "wires": [
+            [
+                "3f8214a134299533",
+                "a9ec6d4e2edb9c65"
+            ]
+        ]
+    },
+    {
+        "id": "3f8214a134299533",
+        "type": "debug",
+        "z": "fd24d304bb9eec3a",
+        "name": "WhatsApp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a9ec6d4e2edb9c65",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "fd24d304bb9eec3a",
+        "name": "Whats App",
+        "account": "b936cf182d8e66b5",
+        "text": "payload",
+        "inputtypemessage": "msg",
+        "rejectssl": false,
+        "x": 1270,
+        "y": 240,
+        "wires": [
+            [
+                "468c2f4323f85d4a"
+            ]
+        ]
+    },
+    {
+        "id": "468c2f4323f85d4a",
+        "type": "debug",
+        "z": "fd24d304bb9eec3a",
+        "name": "sent Message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1480,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "da8c50a8075f1239",
+        "type": "usbcamera",
+        "z": "fd24d304bb9eec3a",
+        "filemode": "1",
+        "filename": "image01.jpg",
+        "filedefpath": "1",
+        "filepath": "",
+        "fileformat": "jpeg",
+        "resolution": "1",
+        "name": "",
+        "x": 550,
+        "y": 120,
+        "wires": [
+            [
+                "7e39a79266beb51b"
+            ]
+        ]
+    },
+    {
+        "id": "4337198e36ed8c0a",
+        "type": "inject",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "da8c50a8075f1239"
+            ]
+        ]
+    },
+    {
+        "id": "1fb547802876c945",
+        "type": "GSheet",
+        "z": "fd24d304bb9eec3a",
+        "creds": "37c2a6bbbd4344f9",
+        "method": "append",
+        "action": "",
+        "sheet": "1UT2MsKa4LD3ox_84Jb1KhryuFKsc-YOj7tWLyW3PQaw",
+        "cells": "Sheet1!A1:A1000",
+        "flatten": false,
+        "name": "",
+        "x": 1530,
+        "y": 380,
+        "wires": [
+            [
+                "8d14fd5db0e9a37d"
+            ]
+        ]
+    },
+    {
+        "id": "622864ac24b9e476",
+        "type": "json",
+        "z": "fd24d304bb9eec3a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1270,
+        "y": 420,
+        "wires": [
+            [
+                "1fb547802876c945"
+            ]
+        ]
+    },
+    {
+        "id": "8d14fd5db0e9a37d",
+        "type": "debug",
+        "z": "fd24d304bb9eec3a",
+        "name": "GSheet",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1680,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "8cc71ddb2ef655eb",
+        "type": "function",
+        "z": "fd24d304bb9eec3a",
+        "name": "function 14",
+        "func": "msg.payload = msg.classes;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 300,
+        "wires": [
+            [
+                "622864ac24b9e476"
+            ]
+        ]
+    },
+    {
+        "id": "b936cf182d8e66b5",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "IOT LAB"
+    },
+    {
+        "id": "37c2a6bbbd4344f9",
+        "type": "gauth",
+        "name": "anima-count@wild-life-384111.iam.gserviceaccount.com"
+    }
+]

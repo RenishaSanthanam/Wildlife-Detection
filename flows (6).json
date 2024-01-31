@@ -1,0 +1,170 @@
+[
+    {
+        "id": "054c8155b045f2a4",
+        "type": "tab",
+        "label": "Wildlife detection time and excel sheet",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "57a8d0e3d63c4da1",
+        "type": "function",
+        "z": "054c8155b045f2a4",
+        "name": "function 17",
+        "func": "var d = new Date();\nvar day = d.getDate()  //day as a number 1 -31\nvar weekday = d.getDay()  //-weekday as a number  0-6\nvar month = d.getMonth() // month as a number 0-11\nvar year = d.getFullYear() //year as a four digit number (yyyy)\nvar hours = d.getHours() //the hour (0-23)\nvar minutes = d.getMinutes() //-the minute (0-59)\nvar seconds = d.getSeconds() //-the seconds (0-59)\n\n\nvar d = new Date();\nvar day = d.getDate();\nvar month = d.getMonth();\nvar year = d.getFullYear();\nif (day <= 9)\n    day = \"0\" + day;\nif (month <= 9)\n    month = \"0\" + (month+1);\nvar date_out = day + \"/\" + month + \"/\" + year;\nvar time_out = hours + \" : \" + minutes + \" : \" + seconds;\n\nvar date_time = date_out + \" , \" + time_out;\nmsg.payload = date_out;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 280,
+        "wires": [
+            [
+                "864a96e1076e7a7b",
+                "295fa32f200dae91"
+            ]
+        ]
+    },
+    {
+        "id": "5ae45b295c7461bd",
+        "type": "inject",
+        "z": "054c8155b045f2a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 260,
+        "wires": [
+            [
+                "57a8d0e3d63c4da1",
+                "ed017e41dddfbc81"
+            ]
+        ]
+    },
+    {
+        "id": "864a96e1076e7a7b",
+        "type": "debug",
+        "z": "054c8155b045f2a4",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ed017e41dddfbc81",
+        "type": "function",
+        "z": "054c8155b045f2a4",
+        "name": "function 18",
+        "func": "var d = new Date();\nvar day = d.getDate()  //day as a number 1 -31\nvar weekday = d.getDay()  //-weekday as a number  0-6\nvar month = d.getMonth() // month as a number 0-11\nvar year = d.getFullYear() //year as a four digit number (yyyy)\nvar hours = d.getHours() //the hour (0-23)\nvar minutes = d.getMinutes() //-the minute (0-59)\nvar seconds = d.getSeconds() //-the seconds (0-59)\n\n\nvar d = new Date();\nvar day = d.getDate();\nvar month = d.getMonth();\nvar year = d.getFullYear();\nif (day <= 9)\n    day = \"0\" + day;\nif (month <= 9)\n    month = \"0\" + (month+1);\nvar date_out = day + \"/\" + month + \"/\" + year;\nvar time_out = hours + \" : \" + minutes + \" : \" + seconds;\n\nvar date_time = date_out + \" , \" + time_out;\nmsg.payload = time_out;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 380,
+        "wires": [
+            [
+                "9649e552fdee133a"
+            ]
+        ]
+    },
+    {
+        "id": "295fa32f200dae91",
+        "type": "GSheet",
+        "z": "054c8155b045f2a4",
+        "creds": "37c2a6bbbd4344f9",
+        "method": "append",
+        "action": "",
+        "sheet": "1UT2MsKa4LD3ox_84Jb1KhryuFKsc-YOj7tWLyW3PQaw",
+        "cells": "Sheet1!B1:B1000",
+        "flatten": false,
+        "name": "",
+        "x": 750,
+        "y": 280,
+        "wires": [
+            [
+                "51289d58ae11f1e9"
+            ]
+        ]
+    },
+    {
+        "id": "51289d58ae11f1e9",
+        "type": "debug",
+        "z": "054c8155b045f2a4",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "9649e552fdee133a",
+        "type": "GSheet",
+        "z": "054c8155b045f2a4",
+        "creds": "37c2a6bbbd4344f9",
+        "method": "append",
+        "action": "",
+        "sheet": "1UT2MsKa4LD3ox_84Jb1KhryuFKsc-YOj7tWLyW3PQaw",
+        "cells": "Sheet1!C1:C1000",
+        "flatten": false,
+        "name": "",
+        "x": 750,
+        "y": 400,
+        "wires": [
+            [
+                "28d487ab1b7b8d22"
+            ]
+        ]
+    },
+    {
+        "id": "28d487ab1b7b8d22",
+        "type": "debug",
+        "z": "054c8155b045f2a4",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "37c2a6bbbd4344f9",
+        "type": "gauth",
+        "name": "anima-count@wild-life-384111.iam.gserviceaccount.com"
+    }
+]
